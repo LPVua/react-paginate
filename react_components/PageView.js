@@ -41,6 +41,8 @@ const PageView = (props) => {
     }
   }
 
+  console.log('test', renderPage);
+
   return (
     <li className={pageClassName}>
       {renderPage ? (
