@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PageView = (props) => {
-  let { pageClassName, pageLinkClassName } = props;
+  let { pageClassName, pageLinkClassName, renderPage } = props;
   const {
     page,
     selected,
@@ -13,21 +13,18 @@ const PageView = (props) => {
     getEventListener,
     pageSelectedHandler,
     href,
-    extraAriaContext
+    extraAriaContext,
   } = props;
 
   let ariaLabel =
     props.ariaLabel ||
-    'Page ' +
-      page +
-      (extraAriaContext ? ' ' + extraAriaContext : '');
+    'Page ' + page + (extraAriaContext ? ' ' + extraAriaContext : '');
   let ariaCurrent = null;
 
   if (selected) {
     ariaCurrent = 'page';
 
-    ariaLabel =
-      props.ariaLabel || 'Page ' + page + ' is your current page';
+    ariaLabel = props.ariaLabel || 'Page ' + page + ' is your current page';
 
     if (typeof pageClassName !== 'undefined') {
       pageClassName = pageClassName + ' ' + activeClassName;
@@ -46,18 +43,29 @@ const PageView = (props) => {
 
   return (
     <li className={pageClassName}>
-      <a
-        role="button"
-        className={pageLinkClassName}
-        href={href}
-        tabIndex="0"
-        aria-label={ariaLabel}
-        aria-current={ariaCurrent}
-        onKeyPress={pageSelectedHandler}
-        {...getEventListener(pageSelectedHandler)}
-      >
-        {page}
-      </a>
+      {renderPage ? (
+        renderPage({
+          href,
+          ariaLabel,
+          ariaCurrent,
+          pageSelectedHandler,
+          page,
+          ...getEventListener(pageSelectedHandler),
+        })
+      ) : (
+        <a
+          role="button"
+          className={pageLinkClassName}
+          href={href}
+          tabIndex="0"
+          aria-label={ariaLabel}
+          aria-current={ariaCurrent}
+          onKeyPress={pageSelectedHandler}
+          {...getEventListener(pageSelectedHandler)}
+        >
+          {page}
+        </a>
+      )}
     </li>
   );
 };
