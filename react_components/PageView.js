@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PageView = (props) => {
-  let { pageClassName, pageLinkClassName } = props;
+  let { pageClassName, pageLinkClassName, renderPage } = props;
   const {
     page,
     selected,
@@ -46,7 +46,7 @@ const PageView = (props) => {
 
   return (
     <li className={pageClassName}>
-      <a
+    { renderPage ? renderPage({href, ariaLabel, ariaCurrent, pageSelectedHandler, page, ...getEventListener(pageSelectedHandler) }) : <a
         role="button"
         className={pageLinkClassName}
         href={href}
@@ -58,6 +58,8 @@ const PageView = (props) => {
       >
         {page}
       </a>
+    }
+      
     </li>
   );
 };
