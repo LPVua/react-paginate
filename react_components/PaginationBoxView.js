@@ -132,7 +132,7 @@ export default class PaginationBoxView extends Component {
     return {
       [eventListener]: handlerFunction,
     };
-  }
+  };
 
   getForwardJump() {
     const { selected } = this.state;
@@ -207,6 +207,7 @@ export default class PaginationBoxView extends Component {
       activeClassName,
       activeLinkClassName,
       extraAriaContext,
+      renderPage,
     } = this.props;
 
     return (
@@ -223,6 +224,7 @@ export default class PaginationBoxView extends Component {
         ariaLabel={this.ariaLabelBuilder(index)}
         page={index + 1}
         getEventListener={this.getEventListener}
+        renderPage={renderPage}
       />
     );
   }
