@@ -1,10 +1,9 @@
 'use strict';
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const PageView = (props) => {
-  let { pageClassName, pageLinkClassName, renderPage } = props;
+  let { pageClassName, pageLinkClassName } = props;
   const {
     page,
     selected,
@@ -14,6 +13,7 @@ const PageView = (props) => {
     pageSelectedHandler,
     href,
     extraAriaContext,
+    renderPage,
   } = props;
 
   let ariaLabel =
@@ -68,20 +68,6 @@ const PageView = (props) => {
       )}
     </li>
   );
-};
-
-PageView.propTypes = {
-  pageSelectedHandler: PropTypes.func.isRequired,
-  selected: PropTypes.bool.isRequired,
-  pageClassName: PropTypes.string,
-  pageLinkClassName: PropTypes.string,
-  activeClassName: PropTypes.string,
-  activeLinkClassName: PropTypes.string,
-  extraAriaContext: PropTypes.string,
-  href: PropTypes.string,
-  ariaLabel: PropTypes.string,
-  page: PropTypes.number.isRequired,
-  getEventListener: PropTypes.func.isRequired,
 };
 
 export default PageView;

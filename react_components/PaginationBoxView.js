@@ -1,42 +1,10 @@
 'use strict';
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import PageView from './PageView';
 import BreakView from './BreakView';
 
 export default class PaginationBoxView extends Component {
-  static propTypes = {
-    pageCount: PropTypes.number.isRequired,
-    pageRangeDisplayed: PropTypes.number.isRequired,
-    marginPagesDisplayed: PropTypes.number.isRequired,
-    previousLabel: PropTypes.node,
-    previousAriaLabel: PropTypes.string,
-    nextLabel: PropTypes.node,
-    nextAriaLabel: PropTypes.string,
-    breakLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    hrefBuilder: PropTypes.func,
-    onPageChange: PropTypes.func,
-    initialPage: PropTypes.number,
-    forcePage: PropTypes.number,
-    disableInitialCallback: PropTypes.bool,
-    containerClassName: PropTypes.string,
-    pageClassName: PropTypes.string,
-    pageLinkClassName: PropTypes.string,
-    activeClassName: PropTypes.string,
-    activeLinkClassName: PropTypes.string,
-    previousClassName: PropTypes.string,
-    nextClassName: PropTypes.string,
-    previousLinkClassName: PropTypes.string,
-    nextLinkClassName: PropTypes.string,
-    disabledClassName: PropTypes.string,
-    breakClassName: PropTypes.string,
-    breakLinkClassName: PropTypes.string,
-    extraAriaContext: PropTypes.string,
-    ariaLabelBuilder: PropTypes.func,
-    eventListener: PropTypes.string,
-  };
-
   static defaultProps = {
     pageCount: 10,
     pageRangeDisplayed: 2,
